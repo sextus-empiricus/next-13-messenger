@@ -25,7 +25,7 @@
 | `title`    | **Let’s build META Messenger 2.0 with Next.js 13 (Upstash, TypeScript, Redis, Tailwind, NextAuth)** |
 | `author`   | [Sonny Sangha](https://www.youtube.com/@SonnySangha)                                                |
 | `link`     | [click](https://www.youtube.com/watch?v=T2jKJF4BZOY&ab_channel=SonnySangha)                         |
-| `progress` | 01:11 / 3:09                                                                                        |
+| `progress` | 01:54 / 3:09                                                                                        |
 
 ### Notes
 
@@ -35,5 +35,6 @@
 
 * Redis
 * Upstash
-* Positive update
-* SWR
+* optimistic update
+* SWR  
+* Pusher (pop submodule)

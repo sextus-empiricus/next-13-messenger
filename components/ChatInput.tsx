@@ -2,10 +2,11 @@
 
 import React, { FormEvent, useState } from 'react';
 import { nanoid } from 'nanoid';
-import { json } from 'stream/consumers';
+import useSWR from 'swr';
 
 import { images } from '../constants';
 import { Message } from '../types';
+import { fetchMessages } from '../utils/fetchMessages';
 
 import Button from './ui/Button';
 
@@ -13,9 +14,17 @@ const disabledStyle = 'disabled:opacity-50 disabled:cursor-not-allowed';
 
 const ChatInput = () => {
   const [inputValue, setInputValue] = useState<string>('');
+  const {
+    data: messages,
+    error,
+    mutate,
+  } = useSWR<Message[]>('/api/get-messages', fetchMessages);
 
-  const addMessage = (e: FormEvent<HTMLFormElement>) => {
+  console.log(messages);
+
+  const addMessage = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setInputValue('');
 
     if (!inputValue) return;
 
@@ -37,17 +46,20 @@ const ChatInput = () => {
         body: JSON.stringify({ message }),
       });
       const data = await res.json();
-      console.log('MESSAGE ADDED >>>', data);
+
+      return [data.message, ...messages!];
     };
 
-    updateMessageToUpstash();
-    setInputValue('');
+    await mutate(updateMessageToUpstash, {
+      optimisticData: [message, ...messages!],
+      rollbackOnError: true,
+    });
   };
 
   return (
     <form
       onSubmit={addMessage}
-      className="fixed bottom-0 w-full flex py-5 px-10 space-x-2 border-t border-gray-100"
+      className="fixed bottom-0 w-full flex py-5 px-10 space-x-2 border-t border-gray-100 bg-white"
     >
       <input
         type="text"

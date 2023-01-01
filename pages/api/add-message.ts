@@ -2,11 +2,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import redis from '../../redis';
-import { Data, ErrorData } from '../../types';
+import { AddMessageResponse, ErrorData } from '../../types';
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data | ErrorData>,
+  res: NextApiResponse<AddMessageResponse | ErrorData>,
 ) {
   if (req.method !== 'POST') {
     res.status(405).json({ name: 'Method Not Allowed' });
@@ -18,7 +18,6 @@ export default async function handler(
     createdAt: Date.now(),
   };
 
-  // push to redis;
   await redis.hset('messages', newMessage.id, JSON.stringify(newMessage));
 
   res.status(200).json({ message: newMessage });

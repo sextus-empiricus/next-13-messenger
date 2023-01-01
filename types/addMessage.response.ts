@@ -1,9 +1,5 @@
 import { Message } from './message.interface';
 
-export type Data = {
+export type AddMessageResponse = {
   message: Message;
-};
-
-export type ErrorData = {
-  name: string;
 };
