@@ -25,16 +25,23 @@
 | `title`    | **Let’s build META Messenger 2.0 with Next.js 13 (Upstash, TypeScript, Redis, Tailwind, NextAuth)** |
 | `author`   | [Sonny Sangha](https://www.youtube.com/@SonnySangha)                                                |
 | `link`     | [click](https://www.youtube.com/watch?v=T2jKJF4BZOY&ab_channel=SonnySangha)                         |
-| `progress` | 01:54 / 3:09                                                                                        |
+| `progress` | 02:40 / 3:09                                                                                        |
 
 ### Notes
 
 * Every interactive element should be a client component,
+* ```ts 
+    interface Props {
+      // 🔥 - amazing way for getting fn's return type! 
+      providers: Awaited<ReturnType<typeof getProviders>>;
+    }
+    ```
 
-### New things I learned
+### New tools I learned
 
 * Redis
 * Upstash
 * optimistic update
-* SWR  
+* SWR
 * Pusher (pop submodule)
+* Flowbite

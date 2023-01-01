@@ -20,8 +20,6 @@ const ChatInput = () => {
     mutate,
   } = useSWR<Message[]>('/api/get-messages', fetchMessages);
 
-  console.log(messages);
-
   const addMessage = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setInputValue('');

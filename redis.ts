@@ -1,3 +1,5 @@
 import Redis from 'ioredis';
 
-export default new Redis(process.env.REDIS_URL as string);
+import { EnvKeys } from './utils/envKeys.enum';
+
+export default new Redis(process.env[EnvKeys.REDIS_URL]!);
