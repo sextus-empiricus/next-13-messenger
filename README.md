@@ -11,7 +11,7 @@
   </p>
 </p>
 
-![screenshot](./public/view.jpg)
+![screenshot](./public/screen.jpg)
 
 ## Next.js 13 - Meta Messenger
 
