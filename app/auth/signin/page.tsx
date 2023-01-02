@@ -11,13 +11,13 @@ const SignInPage = async () => {
   const providers = await getProviders();
 
   return (
-    <div>
+    <div className="grid justify-center">
       <div>
         <Image
-          src={images.metaLogo}
-          className=""
-          width={700}
-          height={700}
+          src={images.messengerLogo}
+          className="mb-8"
+          width={500}
+          height={500}
           alt="Profile Picture"
         />
       </div>

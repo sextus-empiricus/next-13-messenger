@@ -1,8 +1,10 @@
+// >>> client component <<< (child of <MessageList/> which is a client component);
 import React from 'react';
+import TimeAgo from 'react-timeago';
 
 import Image from 'next/image';
+import { useSession } from 'next-auth/react';
 
-import { images } from '../constants';
 import { Message } from '../types';
 
 interface Props {
@@ -11,7 +13,8 @@ interface Props {
 }
 
 const MessageComponent = ({ message }: Props) => {
-  const isUser = true;
+  const { data: session } = useSession();
+  const isUser = session?.user?.email === message.email;
 
   return (
     <div className={`flex w-fit ${isUser && 'ml-auto'}`}>
@@ -20,7 +23,7 @@ const MessageComponent = ({ message }: Props) => {
           className="rounded-full mx-2"
           height={10}
           width={50}
-          src={images.dummyAvatar}
+          src={message.profilePicture}
           alt="Profile Picture"
         />
       </div>
@@ -31,7 +34,7 @@ const MessageComponent = ({ message }: Props) => {
             isUser ? 'text-blue-400 text-right' : 'text-red-400 text-left'
           }`}
         >
-          {message.userName}
+          {message.username}
         </p>
 
         <div className="flex items-end">
@@ -47,7 +50,7 @@ const MessageComponent = ({ message }: Props) => {
               isUser && 'text-right'
             }`}
           >
-            {new Date(message.createdAt).toLocaleDateString()}
+            <TimeAgo date={new Date(message.createdAt)} />
           </p>
         </div>
       </div>

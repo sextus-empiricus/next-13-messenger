@@ -9,6 +9,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html>
       <head />
       <body>
+        {/* <Header/> is awaited and TS doesn't expect a Promise in JSX components structure.
+        But there we are working with SSR hence it's fine!
+        @ts-ignore */}
         <Header />
         {children}
       </body>

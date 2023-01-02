@@ -1,7 +1,7 @@
 import Pusher from 'pusher';
 import ClientPusher from 'pusher-js';
 
-import { EnvKeys } from './utils/envKeys.enum';
+import { EnvKeys } from './types/envKeys.enum';
 
 export const serverPusher = new Pusher({
   appId: process.env[EnvKeys.PUSHER_APP_ID]!,

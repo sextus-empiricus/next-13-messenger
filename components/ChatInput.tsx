@@ -4,7 +4,6 @@ import React, { FormEvent, useState } from 'react';
 import { nanoid } from 'nanoid';
 import useSWR from 'swr';
 
-import { images } from '../constants';
 import { Message } from '../types';
 import { fetchMessages } from '../utils/fetchMessages';
 
@@ -12,11 +11,15 @@ import Button from './ui/Button';
 
 const disabledStyle = 'disabled:opacity-50 disabled:cursor-not-allowed';
 
-const ChatInput = () => {
+interface Props {
+  // session: Awaited<ReturnType<typeof unstable_getServerSession>> - declared as unknown for some reason
+  session: any;
+}
+
+const ChatInput = ({ session }: Props) => {
   const [inputValue, setInputValue] = useState<string>('');
   const {
     data: messages,
-    error,
     mutate,
   } = useSWR<Message[]>('/api/get-messages', fetchMessages);
 
@@ -24,15 +27,15 @@ const ChatInput = () => {
     e.preventDefault();
     setInputValue('');
 
-    if (!inputValue) return;
+    if (!inputValue || !session) return;
 
     const message: Message = {
       id: nanoid(),
       message: inputValue,
       createdAt: Date.now(),
-      userName: 'Elon Musk',
-      profilePicture: images.dummyAvatar,
-      email: 'test@test.test',
+      username: session.user.name,
+      profilePicture: session.user.image,
+      email: session.user.email,
     };
 
     const updateMessageToUpstash = async () => {
@@ -63,6 +66,7 @@ const ChatInput = () => {
         type="text"
         placeholder="Enter your message..."
         value={inputValue}
+        disabled={!session}
         onChange={(e) => setInputValue(e.target.value)}
         className={`flex-1 rounded border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent px-5 py-3 ${disabledStyle}`}
       />

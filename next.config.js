@@ -5,6 +5,6 @@ module.exports = () => ({
     appDir: true,
   },
   images: {
-    domains: ['1000logos.net', 'randomuser.me'],
+    domains: ['1000logos.net', 'randomuser.me', 'platform-lookaside.fbsbx.com'],
   },
 });

@@ -1,16 +1,13 @@
 <p align="center">
-  <a href="https://example.com/">
-    <img src="https://via.placeholder.com/72" alt="Logo" width=72 height=72>
+  <a href="https://github.com/sextus-empiricus/next13-messenger">
+    <img src="./public/messenger-logo.png" alt="Logo" width=72 height=72>
   </a>
 
 <h3 align="center">Logo</h3>
 
   <p align="center">
-    Short description
+    Let’s build META Messenger 2.0 with Next.js 13 (Upstash, TypeScript, Redis, Tailwind, NextAuth)
     <br>
-    <a href="https://reponame/issues/new?template=bug.md">Report bug</a>
-    ·
-    <a href="https://reponame/issues/new?template=feature.md&labels=feature">Request feature</a>
   </p>
 </p>
 
@@ -25,23 +22,22 @@
 | `title`    | **Let’s build META Messenger 2.0 with Next.js 13 (Upstash, TypeScript, Redis, Tailwind, NextAuth)** |
 | `author`   | [Sonny Sangha](https://www.youtube.com/@SonnySangha)                                                |
 | `link`     | [click](https://www.youtube.com/watch?v=T2jKJF4BZOY&ab_channel=SonnySangha)                         |
-| `progress` | 02:40 / 3:09                                                                                        |
+| `progress` | finished                                                                                            |
 
 ### Notes
 
 * Every interactive element should be a client component,
 * ```ts 
     interface Props {
-      // 🔥 - amazing way for getting fn's return type! 
+      // 🔥 amazing way for getting fn's return type! 
       providers: Awaited<ReturnType<typeof getProviders>>;
     }
     ```
 
-### New tools I learned
+### New tools I worked with
 
-* Redis
-* Upstash
-* optimistic update
-* SWR
-* Pusher (pop submodule)
-* Flowbite
+* [Redis](https://redis.io/)
+* [Upstash](https://upstash.com/)
+* [SWR](https://swr.vercel.app/) (and *optimistic update*)
+* [Pusher](https://pusher.com/) ( *pop submodule*)
+* [Flowbite](https://flowbite.com/)
