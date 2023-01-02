@@ -1,15 +1,17 @@
 <p align="center">
   <a href="https://github.com/sextus-empiricus/next13-messenger">
-    <img src="./public/messenger-logo.png" alt="Logo" width=72 height=72>
+    <img src="./public/messenger-logo.png" alt="Logo" width=130 height=72>
   </a>
 
-<h3 align="center">Logo</h3>
+<h3 align="center">META Messenger</h3>
 
   <p align="center">
     Let’s build META Messenger 2.0 with Next.js 13 (Upstash, TypeScript, Redis, Tailwind, NextAuth)
     <br>
   </p>
 </p>
+
+![screenshot](./public/view.jpg)
 
 ## Next.js 13 - Meta Messenger
 
